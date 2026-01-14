@@ -1,0 +1,63 @@
+POST http://127.0.0.1:8000/api/auth/login-cookie/
+Content-Type: application/json
+
+{
+  "email": "joanthanmuangala@gmail.com",
+  "password": "Kadanga2003"
+}
+
+
+###
+GET http://127.0.0.1:8000/api/cours/1/documents/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4NDE4MjQxLCJpYXQiOjE3Njg0MTc5NDEsImp0aSI6IjFhMWVmNTljNzc1YTQzMDA5NjE3YjUwNjgwNjAyNDM0IiwidXNlcl9pZCI6IjEifQ.G73ox9GPJZF7ijEzx5LEyiChl1alF-Lf_vSUy8Y5fss
+
+###
+POST http://127.0.0.1:8000/api/cours/1/documents/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4NDE4MjQxLCJpYXQiOjE3Njg0MTc5NDEsImp0aSI6IjFhMWVmNTljNzc1YTQzMDA5NjE3YjUwNjgwNjAyNDM0IiwidXNlcl9pZCI6IjEifQ.G73ox9GPJZF7ijEzx5LEyiChl1alF-Lf_vSUy8Y5fss
+Content-Type: application/json
+
+{
+  "titre": "Notes – Cardiologie",
+  "categorie": "notes"
+}
+
+
+###
+GET http://127.0.0.1:8000/api/auth/users/me/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4NDEyNzQxLCJpYXQiOjE3Njg0MTI0NDEsImp0aSI6IjRkZDA0NGQxNGIzNDQxMTI5MjkxY2FmYzg5MGY1YTkyIiwidXNlcl9pZCI6IjQifQ.GYKr3uw7QGdBY8oHierKazMBV8X8i4gi6F0oRZHV91A
+
+
+###
+PATCH http://127.0.0.1:8000/api/auth/users/me/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4NDEyNzQxLCJpYXQiOjE3Njg0MTI0NDEsImp0aSI6IjRkZDA0NGQxNGIzNDQxMTI5MjkxY2FmYzg5MGY1YTkyIiwidXNlcl9pZCI6IjQifQ.GYKr3uw7QGdBY8oHierKazMBV8X8i4gi6F0oRZHV91A
+Content-Type: application/json
+
+{
+  "telephone": "0812345678",
+  "role" : "ADMIN",
+  "bio": "Étudiant B3 – passionné de physique"
+}
+
+
+###
+GET http://127.0.0.1:8000/api/auth/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4NDEwNzk5LCJpYXQiOjE3Njg0MTA0OTksImp0aSI6Ijg2ZDYzN2U2YjE3MDQzM2RiZDcyYTk2NDk0M2IwMWY0IiwidXNlcl9pZCI6IjQifQ.Caxc4qsfi86ntOs29bZ-wPGTbw5jp5UuRHQXxCPQaLs
+###
+POST http://127.0.0.1:8000/api/create-encadreur/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4MzMyNDM2LCJpYXQiOjE3NjgzMzIxMzYsImp0aSI6IjY3MTFmM2NmZTliMjRhZGE4ZjlhNGE4Njk0ZDMyMGNhIiwidXNlcl9pZCI6IjEifQ.Kgc32ifr9zRpVv8KiSLZ19DbAKIbLjsKsXIJYiyup9s
+
+###
+
+POST http://127.0.0.1:8000/api/auth/token/
+Content-Type: application/json
+
+{
+  "email": "joanthanmuangala@gmail.com",
+  "password": "Kadanga2003"
+}
+
+###
+POST http://127.0.0.1:8000/api/auth/refresh-cookie/
+
+###
+POST http://127.0.0.1:8000/api/auth/logout-cookie/
