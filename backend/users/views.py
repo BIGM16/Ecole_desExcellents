@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.conf import settings
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework.permissions import IsAuthenticated
 from users.models import User
@@ -22,11 +23,6 @@ def login_cookie_view(request):
 
     if not email or not password:
         return Response({"error": "Email et mot de passe requis"}, status=400)
-
-    # Django's default ModelBackend expects the username kwarg.
-    # Our custom user model uses `email` as `USERNAME_FIELD`, so
-    # pass it as `username` to `authenticate`.
-    # user = authenticate(email=email, password=password)
     user = authenticate(request, username=email, password=password)
     if user is None:
         return Response({"error": "Identifiants invalides"}, status=401)
@@ -46,13 +42,24 @@ def login_cookie_view(request):
         }
     })
 
+    response.set_cookie(
+        key=settings.SIMPLE_JWT["AUTH_COOKIE"],
+        value=str(refresh.access_token),
+        httponly=True,
+        secure=settings.SIMPLE_JWT["AUTH_COOKIE_SECURE"],
+        samesite=settings.SIMPLE_JWT["AUTH_COOKIE_SAMESITE"],
+        path="/",
+        max_age=15*60 # 5 minutes
+    )
+
     # Mettre refresh token dans cookie HttpOnly
     response.set_cookie(
-        key="refresh_token",
+        key=settings.SIMPLE_JWT["AUTH_COOKIE_REFRESH"],
         value=str(refresh),
         httponly=True,
-        secure=False,  # True en prod avec HTTPS
-        samesite='Lax',
+        secure=settings.SIMPLE_JWT["AUTH_COOKIE_SECURE"],
+        samesite=settings.SIMPLE_JWT["AUTH_COOKIE_SAMESITE"],
+        path="/",
         max_age=7*24*3600  # 7 jours
     )
 
