@@ -1,0 +1,21 @@
+installation:
+  version: 6.0.0-alpha.23
+  installDate: 2026-01-25T15:55:51.958Z
+  lastUpdated: 2026-01-25T15:55:51.958Z
+modules:
+  - core
+  - bmb
+  - bmm
+  - cis
+ides:
+  - claude-code
+  - codex
+  - cursor
+  - github-copilot
+  - antigravity
+  - opencode
+  - windsurf
+  - rovo-dev
+  - gemini
+  - kiro-cli
+  - qwen

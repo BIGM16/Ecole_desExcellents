@@ -31,7 +31,7 @@ class CanAccessUser(BasePermission) :
         
         if user.role == 'ETUDIANT' :
             return (
-                request.methode == 'GET'
+                request.method == 'GET'
                 and obj.promotion  == user.promotion
             )
         return False

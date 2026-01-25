@@ -11,10 +11,11 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const token = req.cookies.get("accessToken")?.value;
+  // ✅ Chercher le bon cookie: "access_token" (du serveur Django)
+  const token = req.cookies.get("access_token")?.value;
 
   if (!token) {
-    return NextResponse.redirect(new URL("/login", req.url));
+    return NextResponse.redirect(new URL("/auth/login", req.url));
   }
 
   return NextResponse.next();

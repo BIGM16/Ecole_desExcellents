@@ -9,6 +9,8 @@ export type User = {
   email: string;
   first_name: string;
   last_name: string;
+  telephone: number;
+  bio: string;
   role: "ADMIN" | "COORDON" | "ENCADREUR" | "ETUDIANT";
   promotion?: Promotion | null;
 };

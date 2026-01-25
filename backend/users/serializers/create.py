@@ -4,6 +4,7 @@ from academique.models import Promotion
 
 class UserCreateSerializer(serializers.ModelSerializer) :
     password = serializers.CharField(write_only=True, required=False)
+    role = serializers.CharField(required=False)  # Optional car passé via .save()
 
     class Meta :
         model = User
@@ -20,12 +21,19 @@ class UserCreateSerializer(serializers.ModelSerializer) :
         request = self.context['request']
         creator = request.user
 
+        # Ne valider que si le role est fourni dans les données
+        role = attrs.get('role')
+        if role is None:
+            return attrs
+
         if creator.role == 'COORDON' :
-            if attrs.get('role') != 'ETUDIANT' :
+            if role != 'ETUDIANT' :
                 raise serializers.ValidationError(
                     "Un coordonnateur ne peut créer que des étudiants."
                 )
-            if attrs.get('promotion') != creator.promotion :
+            # Valider la promotion si elle est fournie
+            promotion = attrs.get('promotion')
+            if promotion and promotion != creator.promotion :
                 raise serializers.ValidationError(
                     "Un coordonnateur ne peut créer un étudiant que de sa promotion."
                 )
@@ -41,6 +49,6 @@ class UserCreateSerializer(serializers.ModelSerializer) :
         else :
             user.set_unusable_password()
 
-        user.save
+        user.save()
         return user
 

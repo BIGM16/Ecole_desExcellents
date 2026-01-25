@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth } from "@/lib/context/AuthContext";
+// import { useAuth } from "@/lib/context/AuthContext";
 // import { useRouter } from "next/navigation";
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
@@ -11,15 +11,15 @@ import { HierarchySection } from "@/components/hierarchy-section";
 import { Footer } from "@/components/footer";
 
 export function HomeClient() {
-  const { loading } = useAuth();
-  // const router = useRouter();
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        Chargement...
-      </div>
-    );
-  }
+  // const { loading } = useAuth();
+  // // const router = useRouter();
+  // if (loading) {
+  //   return (
+  //     <div className="flex items-center justify-center min-h-screen">
+  //       Chargement...
+  //     </div>
+  //   );
+  // }
   return (
     <main className="min-h-screen">
       <Header />

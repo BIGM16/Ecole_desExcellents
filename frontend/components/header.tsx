@@ -84,12 +84,39 @@ export function Header() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
-            {user?.role === "admin" && (
+            {user?.role === "ADMIN" && (
               <a
                 href="/admin"
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative group"
               >
                 Admin
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+              </a>
+            )}
+            {user?.role === "COORDON" && (
+              <a
+                href="/coordon"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative group"
+              >
+                Coordon
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+              </a>
+            )}
+            {user?.role === "ENCADREUR" && (
+              <a
+                href="/encadreur"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative group"
+              >
+                Encadreur
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+              </a>
+            )}
+            {user?.role === "ETUDIANT" && (
+              <a
+                href="/etudiant"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative group"
+              >
+                Etudiant
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </a>
             )}
@@ -104,8 +131,12 @@ export function Header() {
                   asChild
                   className="hidden md:flex mr-2 bg-transparent hover:bg-transparent"
                 >
-                  <a href="/profile" className="text-sm">
+                  <a
+                    href="/profile"
+                    className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative group"
+                  >
                     Profil
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
                   </a>
                 </Button>
                 <Button
@@ -122,7 +153,7 @@ export function Header() {
                 asChild
                 className="hidden md:flex bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                <a href="/login">Connexion</a>
+                <a href="/auth/login">Connexion</a>
               </Button>
             )}
 
@@ -154,7 +185,7 @@ export function Header() {
                   {item.label}
                 </a>
               ))}
-              {user?.role === "admin" && (
+              {user?.role === "ADMIN" && (
                 <a
                   href="/admin"
                   className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
@@ -184,7 +215,7 @@ export function Header() {
                   asChild
                   className="w-full bg-primary text-primary-foreground mt-2"
                 >
-                  <a href="/login">Connexion</a>
+                  <a href="/auth/login">Connexion</a>
                 </Button>
               )}
             </nav>

@@ -5,8 +5,9 @@ Content-Type: application/json
   "email": "joanthanmuangala@gmail.com",
   "password": "Kadanga2003"
 }
-
-
+###
+GET http://localhost:8000/api/academique/coordons/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4ODc5NzI1LCJpYXQiOjE3Njg4Nzg4MjUsImp0aSI6IjlhOTc3ZmE1YjlmMzRhYmU5MDZlMWQzNTU5ZDc3NWRiIiwidXNlcl9pZCI6IjEifQ.r58FfjvREHQ6cXz-oq32ttEx0thfO36_7gTitlvmJh0
 ###
 GET http://127.0.0.1:8000/api/cours/1/documents/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4NDE4MjQxLCJpYXQiOjE3Njg0MTc5NDEsImp0aSI6IjFhMWVmNTljNzc1YTQzMDA5NjE3YjUwNjgwNjAyNDM0IiwidXNlcl9pZCI6IjEifQ.G73ox9GPJZF7ijEzx5LEyiChl1alF-Lf_vSUy8Y5fss
@@ -24,12 +25,10 @@ Content-Type: application/json
 
 ###
 GET http://127.0.0.1:8000/api/auth/users/me/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4NTYxMDY1LCJpYXQiOjE3Njg1NjA3NjUsImp0aSI6IjA5ZGY0MWM3MzU1MDQzNDZiMDE0YmE3NWRmOTAzZjczIiwidXNlcl9pZCI6IjEifQ.7scwbj2wouViHdh9q3A-hWgHKIJLrF6rqgfzwK-h5tQ
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4ODY3ODE3LCJpYXQiOjE3Njg4NjY5MTcsImp0aSI6IjdmOTIxODBkZTBkMzQ1YTY4OGJlMmQ0YTZlYmQ5MjMxIiwidXNlcl9pZCI6IjEifQ.zDYraF_mHgiPUl9oi1aFlr1ynHH0LdoAc8APE6JdqNo
 ###
 PATCH http://127.0.0.1:8000/api/auth/users/me/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4NTYxMDY1LCJpYXQiOjE3Njg1NjA3NjUsImp0aSI6IjA5ZGY0MWM3MzU1MDQzNDZiMDE0YmE3NWRmOTAzZjczIiwidXNlcl9pZCI6IjEifQ.7scwbj2wouViHdh9q3A-hWgHKIJLrF6rqgfzwK-h5tQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4ODIwNTU3LCJpYXQiOjE3Njg4MTk2NTcsImp0aSI6IjRjNzRhOWQzZmM1MDRkYzJiZmVjN2QzOWYwZTQxZWE2IiwidXNlcl9pZCI6IjEifQ.0CQpsOD8WyoQbTk4KvNh_EtJgHB3nMwZlxD4bMARb7Q
 Content-Type: application/json
 
 {
@@ -41,7 +40,7 @@ Content-Type: application/json
 
 ###
 GET http://127.0.0.1:8000/api/auth/user/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4NTYxMDY1LCJpYXQiOjE3Njg1NjA3NjUsImp0aSI6IjA5ZGY0MWM3MzU1MDQzNDZiMDE0YmE3NWRmOTAzZjczIiwidXNlcl9pZCI6IjEifQ.7scwbj2wouViHdh9q3A-hWgHKIJLrF6rqgfzwK-h5tQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4ODI0MjA5LCJpYXQiOjE3Njg4MjMzMDksImp0aSI6IjM1MTU2MGY5MzllZjQ3M2ZhZjM1MDU5OWZhZjMyOGYwIiwidXNlcl9pZCI6IjEifQ.ZkHpJHFEHzAWWqcj5_YiD0cytc3xLpvb-On53sc69TM
 ###
 
 POST http://127.0.0.1:8000/api/create-encadreur/

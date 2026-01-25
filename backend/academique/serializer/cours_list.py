@@ -4,8 +4,8 @@ from academique.models import Cours
 
 
 class CoursListSerializer(serializers.ModelSerializer):
-    encadreurs = serializers.StringRelatedField(many=True)
-    promotions = serializers.StringRelatedField(many=True)
+    encadreurs = serializers.SerializerMethodField()
+    promotions = serializers.SerializerMethodField()
 
     class Meta:
         model = Cours
@@ -14,4 +14,19 @@ class CoursListSerializer(serializers.ModelSerializer):
             'titre',
             'encadreurs',
             'promotions',
+            'description',
+        ]
+
+    def get_encadreurs(self, obj):
+        """Retourne liste des encadreurs avec id et nom"""
+        return [
+            {'id': enc.id, 'first_name': enc.first_name, 'last_name': enc.last_name}
+            for enc in obj.encadreurs.all()
+        ]
+
+    def get_promotions(self, obj):
+        """Retourne liste des promotions avec id et nom"""
+        return [
+            {'id': promo.id, 'name': promo.name}
+            for promo in obj.promotions.all()
         ]

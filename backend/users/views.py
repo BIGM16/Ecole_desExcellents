@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.conf import settings
-from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
-from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from users.models import User
 from users.permissions import CanAccessUser
 from users.serializers import (
@@ -17,6 +17,7 @@ from users.serializers import (
 )
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def login_cookie_view(request):
     email = request.data.get('email')
     password = request.data.get('password')
@@ -27,14 +28,14 @@ def login_cookie_view(request):
     if user is None:
         return Response({"error": "Identifiants invalides"}, status=401)
 
-    # Crée les tokens
+    # # Crée les tokens
     refresh = RefreshToken.for_user(user)
-    access = str(refresh.access_token)
+    access_token = str(refresh.access_token)
 
     # Réponse JSON avec access token et info user
     response = Response({
         "message": "Connexion réussie",
-        "access": access,
+        "access": access_token,
         "user": {
             "id": user.id,
             "email": user.email,
@@ -67,8 +68,9 @@ def login_cookie_view(request):
 
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def refresh_cookie_view(request):
-    refresh_token = request.COOKIES.get('refresh_token')
+    refresh_token = request.COOKIES.get(settings.SIMPLE_JWT.get('AUTH_COOKIE_REFRESH'))
 
     if not refresh_token:
         return Response({"error": "Pas de refresh token"}, status=401)
@@ -82,20 +84,21 @@ def refresh_cookie_view(request):
     
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def logout_cookie_view(request):
     response = Response({"message": "Déconnexion réussie"})
-    # Supprimer le cookie refresh
-    response.delete_cookie('refresh_token')
+    # Supprimer les cookies
+    response.delete_cookie(settings.SIMPLE_JWT.get('AUTH_COOKIE'))
+    response.delete_cookie(settings.SIMPLE_JWT.get('AUTH_COOKIE_REFRESH'))
     return response
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def profile_view(request) :
-    return Response({
-        "id": request.user.id,
-        "email": request.user.email
-    })
+def me_view(request):
+    """Endpoint /me pour vérifier l'authentification et obtenir les données utilisateur"""
+    serializer = UserMeSerializer(request.user)
+    return Response(serializer.data)
 
 
 class UserListCreateAPIView(APIView):
